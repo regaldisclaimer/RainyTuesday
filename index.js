@@ -1,25 +1,31 @@
 // Dean's List Firebase JS scripts
 // v 0.1
 // @regaldisclaimer @dyz3
+//requires firebase and jQuery
 
 var myFirebaseRef = new Firebase("https://deans.firebaseio.com/");
 
 var postsRef = ref.child("posts");
 
-
+var authVar;
 
 //preliminary functions
 
 
 // Create user via server
 function createUser(){
+	var email;
+
 	//get email address
 
 	//POST to server to create user
-
-	//If success notify to check email and set a password
-
-	//If err, display err
+	$.post("https://deanslist.herokuapp.com/createUser", {email:email}, function(err){
+		if (err) {
+			alert('There was an error with creating user. Please use your tufts email!');
+		} else {
+			alert('User created successfully, Check your email to set password!');
+		}
+	});
 }
 
 
@@ -51,6 +57,36 @@ function changePass(){
 		})
 	}
 }
+
+//user authentication
+function logIn(){
+	var email;
+	var pass;
+
+	//fetch input
+
+
+	//login
+	myFirebaseRef.authWithPassword({
+		email: email,
+		password: pass,
+	}, function(error,authData) {
+		if (error) {
+			alert('error');
+		} else {
+			alert('Logged in successfully!');
+			authVar = authData;
+		}
+	})
+}
+
+//log user out
+
+function logOut(){
+
+
+}
+
 
 // Create new post as current user
 function newPost(){
@@ -93,8 +129,21 @@ function rejectOffer(){
 }
 
 //
+function newComment(){
 
+}
 
+function fetchCourses(){
+
+}
+
+function fetchEntries(){
+
+}
+
+function fetchComments(){
+
+}
 
 
 </script>
