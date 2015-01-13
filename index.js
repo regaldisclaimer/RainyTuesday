@@ -11,9 +11,45 @@ var postsRef = ref.child("posts");
 //preliminary functions
 
 
-//change password. required for account creation
-function changePass(){
+// Create user via server
+function createUser(){
+	//get email address
 
+	//POST to server to create user
+
+	//If success notify to check email and set a password
+
+	//If err, display err
+}
+
+
+// Change password. required for account creation
+function changePass(){
+	var email;
+	var oldPass;
+	var newPass;
+	var newPassRepeat;
+
+ 	//fetch email, old pass, new pass, new pass repeat.
+
+
+ 	//check newPass==newPassRepeat
+ 	if (newPass != newPassRepeat) {
+ 		alert('New Passwords do not match... Please type them again!');
+ 	} else {
+ 		//change password
+		myFirebaseRef.changePassword({
+			email: email,
+			oldPassword: oldPass,
+			newPassword: newPass,
+		}, function(error) {
+			if (error === null) {
+				//pass changed successfully
+			} else {
+				//error changing password
+			}
+		})
+	}
 }
 
 // Create new post as current user
@@ -46,6 +82,17 @@ function newOffer(){
 
 }
 
+// Accept an offer
+function acceptOffer(){
+
+}
+
+// Reject an offer
+function rejectOffer(){
+
+}
+
+//
 
 
 
