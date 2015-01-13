@@ -120,8 +120,19 @@ function logOut(){
 
 // Create new post as current user
 function newPost(){
+	var uid;
+	var title;
+	var price;
+	var quality;
+	var description;
+	var time;
+
 	//get data from input fields
 
+
+	//some data aren't
+	uid = authVar.uid;
+	
 
 	//push the post, which assigns an ID for it
 
