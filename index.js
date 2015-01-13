@@ -3,14 +3,31 @@
 // @regaldisclaimer @dyz3
 //requires firebase and jQuery
 
+//frequently used global variables
 var myFirebaseRef = new Firebase("https://deans.firebaseio.com/");
-
-var postsRef = ref.child("posts");
-
 var authVar;
+var isAuthenticated;
 
+
+//Update authentication status
+myFirebaseRef.onAuth(authDataCallback);
+
+
+
+
+//
 //preliminary functions
+//
 
+
+//Monitor authentication
+function authDataCallback(authData) {
+	if (authData) {
+		isAuthenticated = true;
+	} else {
+		isAuthenticated = false;
+	}
+}
 
 // Create user via server
 function createUser(){
@@ -78,13 +95,26 @@ function logIn(){
 			authVar = authData;
 		}
 	})
+
+	//check if first time logging in
+		//initialize user if first time
+		//initUser(email);
 }
 
+//initialize user
+function initUser(email){
+	//add email,mypostIDs,etc. under users.child(uid)
+	var uid = authVar.uid;
+	myFirebaseRef.child('users').child('uid').set({
+		email: email
+	});
+}
+
+
 //log user out
-
 function logOut(){
-
-
+	myFirebaseRef.unauth();
+	isAuthenticated = false;
 }
 
 
