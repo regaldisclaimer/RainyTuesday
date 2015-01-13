@@ -7,11 +7,21 @@
 var myFirebaseRef = new Firebase("https://deans.firebaseio.com/");
 var Firebase = require("firebase");
 
-// Function for making an account
-function makeAccount(email, name) {
-	push email;
-	if (name != null)
-		push name;	
+var postsRef = ref.child("posts");
+
+// Create new post as current user
+function newPost(){
+	postsRef.set({
+		post: {
+			uid:auth.uid//?
+			title:
+			price:
+			quality:
+			description:
+			time:
+			comments:
+		}
+	});
 }
 
 </script>
