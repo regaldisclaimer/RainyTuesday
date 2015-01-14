@@ -15,6 +15,14 @@
 	color: gray;
 }
 
+#inputEmail {
+	max-width: 15em;
+}
+
+#inputPassword {
+	max-width: 15em;
+}
+
 #new-listing-full-course-info {
 	display: inline-block;
 }
