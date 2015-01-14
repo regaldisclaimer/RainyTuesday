@@ -14,3 +14,7 @@
 #form-signin-subheading {
 	color: gray;
 }
+
+#new-listing-full-course-info {
+	display: inline-block;
+}
