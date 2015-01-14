@@ -261,6 +261,11 @@ function newOffer(){
 
 }
 
+//
+function newComment(){
+
+}
+
 // Accept an offer
 function acceptOffer(){
 
@@ -271,10 +276,6 @@ function rejectOffer(){
 
 }
 
-//
-function newComment(){
-
-}
 
 function fetchCourses(){
 
