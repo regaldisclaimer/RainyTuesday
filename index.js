@@ -120,42 +120,123 @@ function logOut(){
 
 // Create new post as current user
 function newPost(){
+	var courseDept;
+	var courseNum; //string, not a number
+	var courseSect;
 	var uid;
 	var title;
 	var price;
 	var quality;
 	var description;
 	var time;
+	var courseString;
+	//format course name
+	courseDept = courseDept.toUpperCase();
+	
+	courseString:'';
+
+	//assign known data
+	uid = authVar.uid;
+	time = new Date();
 
 	//get data from input fields
+	//also check for errors
+	if (courseDept.length>5){
+		return false;
+	}
+	if (courseNum.toString().length>4){
+		return false;
+	}
+	if (courseSect.toString().length>2){
+		return false;
+	}
+	if (!courseDept){
+		return false;
+	}
+	if (!courseNum){
+		return false;
+	}
 
 
-	//some data aren't
-	uid = authVar.uid;
-	
-
-	//push the post, which assigns an ID for it
-
+	//
+	//push to get an ID
+	var postRef = myFirebaseRef.child('posts').push();
+	//set to the ID
+	postRef.set({
+		//
+		uid: uid,
+		title: title,
+		price: price,
+		quality: quality,
+		description: description,
+		time: time,
+	},function(err){
+		//
+		alert(err);
+	});
+	var URLsegments = postRef.toString().split('/');
+	var pID = URLsegments[URLsegments.length-1];
 	//save the text name under "$course" and "$postID2" with appropriate dir name
-
+	myFirebaseRef.child('courses').child(courseString).child(pID).set({
+		textName: title
+	});
 	//add the text ID under the user's 'myPostIDs'
-
+	myFirebaseRef.child('users').child(uid).child('myPostIDs').child(pID).set({pID});
 }
 
 // Create new offer
 function newOffer(){
-	//get data from input fields
+	var uidOut;
+	var uidIn;
+	var postID;
+	var amount;
+	var senderEmail;
+	var receptEmail;
+	var message;
+
+	var offerID;
+
+	//known Data
+	uidOut = authVar.uid;
+	myFirebaseRef.child('users').child(uidOut).child('email').once('value', function(data) {
+		senderEmail = data.toString();
+	});
+	myFirebaseRef.child('users').child(uidIn).child('email').once('value', function(data) {
+		receptEmail = data.toString();
+	});
+
+	//get data from input fields & check for err
 
 	//push the offer, which assigns an ID for it
+	var offerRef = myFirebaseRef.child('offers').push();
+	//and set it to the appropriate ID
+	offerRef.set({
+		uidOut: uidOut,
+		uidIn: uidIn,
+		postID3: postID,
+		amount: amount,
+		message: message
+	});
+
+	var URLsegments = offerRef.toString().split('/');
+	offerID = URLsegments[URLsegments.length-1];
 
 	//save the userID under the post with appropriate value as $offerUID
-
+	myFirebaseRef.child('posts').child(postID).child('offerIDs').child(offerID).set({offerID});
 	//add this offer ID to the sending user's 'myOfferIDs'
-
+	myFirebaseRef.child('users').child(uidOut).child('myOfferIDs').child(offerID).set({offerID});
 	//add this offer ID to the receiving user's 'receivedOfferIDs'
-
+	myFirebaseRef.child('users').child(uidIn).child('receivedOfferIDs').child(offerID).set({offerID});
+	
 	//make http call to server notify offer recepient
 		//on fail, note user that notification failed
+	$.post("https://deanslist.herokuapp.com/sendOffer", {
+		sender: senderEmail,
+		recipient: receptEmail,
+		message: message,
+		//URL currently meaningless, as there's no routing in this single page app
+		postPath: ""
+	})
 
 }
 
@@ -183,6 +264,10 @@ function fetchEntries(){
 }
 
 function fetchComments(){
+
+}
+
+function fetchOffers(){
 
 }
 

@@ -3,103 +3,107 @@
 //@RegalDisclaimer @dyz3
 
 {
-	"rules": {
-		".read":"(auth!=null)",
-		".write":"(auth!=null)",
-		"users": {
-			"$user": {
-				"email": {
-					".validate": "($user==auth.uid)&&(!data.exists())&&(newData.exists())"
-				},
-				"myPostIDs": {
-					"$postID1":{
-						".validate": "($user==auth.uid)"
-					}
-				},
-				"myOfferIDs": {
-					"$offerID1": {
-					//remember to add offer here first before creating
-						".validate": "($user==auth.uid)&&(root.child('offers').child($offerID1).child('postID3').val()==null)"
-					}
-				},
-				"receivedOfferIDs": {
-					"$offerID2": {
-						".validate": "(root.child('offers').child('$offerID').child('uidOut').val()==auth.uid)||($user==auth.uid)"
-					}
+"rules": {
+	".read":"(auth!=null)",
+	".write":"(auth!=null)",
+	"users": {
+		"$user": {
+			"email": {
+				".validate": "($user==auth.uid)&&(!data.exists())&&(newData.exists())"
+			},
+			"myPostIDs": {
+				"$postID1":{
+					".validate": "($user==auth.uid)"
 				}
-			}
-		},
-
-		"courses": {
-			"$course": {
-				".validate": "((!data.exists())&&(newData.exists()))",
-				"$postID2": {
-					".validate": "(root.child('posts').child('$postID2').child('uid').val()==auth.uid)",
-					"textName": {
-
-					}
+			},
+			"myOfferIDs": {
+				"$offerID1": {
+				//remember to add offer here first before creating
+					".validate": "($user==auth.uid)&&(root.child('offers').child($offerID1).child('postID3').val()==null)"
 				}
-			}
-		},
-
-		"posts": {
-			"$post": {
-				"uid": {
-					".validate": "newData.val()==auth.uid"
-				},
-				"title": {
-					".validate": "(newData.parent().child('uid').val()==auth.uid)&&(newData.val().length<150)"
-				},
-				"price": {
-					".validate": "(newData.parent().child('uid').val()==auth.uid)&&(newData.isNumber())"
-				},
-				"quality": {
-					".validate": "(newData.parent().child('uid').val()==auth.uid)&&(newData.val().length<50)"
-				},
-				"description": {
-					".validate": "(newData.parent().child('uid').val()==auth.uid)&&(newData.val().length<500)"
-				},
-				"time": {
-					".validate": "(newData.parent().child('uid').val()==auth.uid)&&(!data.exists())&&(newData.exists())&&(newData.val()<now+30)"
-				},
-				"comments": {
-					"$comment": {
-						"uid": {
-							".validate": "newData.val()==auth.uid"
-						},
-						"text": {
-							".validate": "(newData.parent().child('uid').val()==auth.uid)&&(newData.val().length<250)"
-						},
-						"time": {
-							".validate": "(newData.parent().child('uid').val()==auth.uid)&&(!data.exists())&&(newData.exists())&&(newData.val()<now+30)"
-						},
-						"rating": {
-							".validate": "((data.exists())&&(newData.val()==auth.uid))||((!data.exists())&&(newData.exists()))"
-						}
-					}
-				},
-				"offerIDs": {
-					"$offerUID":{
-						".validate": "$offerUID==auth.uid"
-					}
-				}
-			}
-		},
-		"offers": {
-			"$offer": {
-				"uidOut": {
-					".validate": "newData.val()==auth.uid"
-				},
-				"uidIn": {
-					".validate": "(root.child('posts').child('$postID3').child('uid').val()==newData.val())"
-				},
-				"postID3": {
-					".validate": "(root.child('posts').child('$postID3').child('uid').val()==newData.parent().child('uidIN').val())"
-				},
-				"amount": {
-					".validate": "newData.parent().child('uidOut').val()==auth.uid"
+			},
+			"receivedOfferIDs": {
+				"$offerID2": {
+					//
+					".validate": "(root.child('offers').child('$offerID').child('uidOut').val()==auth.uid)||($user==auth.uid)"
 				}
 			}
 		}
+	},
+
+	"courses": {
+		"$course": {
+			".validate": "((!data.exists())&&(newData.exists()))",
+			"$postID2": {
+				".validate": "(root.child('posts').child('$postID2').child('uid').val()==auth.uid)",
+				"textName": {
+
+				}
+			}
+		}
+	},
+
+	"posts": {
+		"$post": {
+			"uid": {
+				".validate": "newData.val()==auth.uid"
+			},
+			"title": {
+				".validate": "(newData.parent().child('uid').val()==auth.uid)&&(newData.val().length<150)"
+			},
+			"price": {
+				".validate": "(newData.parent().child('uid').val()==auth.uid)&&(newData.isNumber())"
+			},
+			"quality": {
+				".validate": "(newData.parent().child('uid').val()==auth.uid)&&(newData.val().length<50)"
+			},
+			"description": {
+				".validate": "(newData.parent().child('uid').val()==auth.uid)&&(newData.val().length<500)"
+			},
+			"time": {
+				".validate": "(newData.parent().child('uid').val()==auth.uid)&&(!data.exists())&&(newData.exists())&&(newData.val()<now+30)"
+			},
+			"comments": {
+				"$comment": {
+					"uid": {
+						".validate": "newData.val()==auth.uid"
+					},
+					"text": {
+						".validate": "(newData.parent().child('uid').val()==auth.uid)&&(newData.val().length<250)"
+					},
+					"time": {
+						".validate": "(newData.parent().child('uid').val()==auth.uid)&&(!data.exists())&&(newData.exists())&&(newData.val()<now+30)"
+					},
+					"rating": {
+						".validate": "((data.exists())&&(newData.val()==auth.uid))||((!data.exists())&&(newData.exists()))"
+					}
+				}
+			},
+			"offerIDs": {
+				"$offerUID":{
+					".validate": "$offerUID==auth.uid"
+				}
+			}
+		}
+	},
+	"offers": {
+		"$offer": {
+			"uidOut": {
+				".validate": "newData.val()==auth.uid"
+			},
+			"uidIn": {
+				".validate": "(root.child('posts').child('$postID3').child('uid').val()==newData.val())"
+			},
+			"postID3": {
+				".validate": "(root.child('posts').child('$postID3').child('uid').val()==newData.parent().child('uidIN').val())"
+			},
+			"amount": {
+				".validate": "newData.parent().child('uidOut').val()==auth.uid"
+			},
+			"message": {
+				".validate": "newData.parent().child('uidOut').val()==auth.uid"
+			}
+		}
 	}
+}
 }
