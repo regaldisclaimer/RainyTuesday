@@ -157,7 +157,7 @@ function newPost(){
 	}
 
 	courseNum = $('#new-listing-course-number').val();
-	if (!courseDept||(courseNum.toString().length>4) {
+	if (!courseNum||(courseNum.toString().length>4)) {
 		return false;
 	}
 	courseSect = $('#new-listing-section').val();
@@ -203,7 +203,7 @@ function newPost(){
 		textName: title
 	});
 	//add the text ID under the user's 'myPostIDs'
-	myFirebaseRef.child('users').child(uid).child('myPostIDs').child(pID).set({pID});
+	myFirebaseRef.child('users').child(uid).child('myPostIDs').child(pID).set(pID);
 }
 
 // Create new offer
@@ -244,11 +244,11 @@ function newOffer(){
 	offerID = URLsegments[URLsegments.length-1];
 
 	//save the userID under the post with appropriate value as $offerUID
-	myFirebaseRef.child('posts').child(postID).child('offerIDs').child(offerID).set({offerID});
+	myFirebaseRef.child('posts').child(postID).child('offerIDs').child(offerID).set(offerID);
 	//add this offer ID to the sending user's 'myOfferIDs'
-	myFirebaseRef.child('users').child(uidOut).child('myOfferIDs').child(offerID).set({offerID});
+	myFirebaseRef.child('users').child(uidOut).child('myOfferIDs').child(offerID).set(offerID);
 	//add this offer ID to the receiving user's 'receivedOfferIDs'
-	myFirebaseRef.child('users').child(uidIn).child('receivedOfferIDs').child(offerID).set({offerID});
+	myFirebaseRef.child('users').child(uidIn).child('receivedOfferIDs').child(offerID).set(offerID);
 	
 	//make http call to server notify offer recepient
 		//on fail, note user that notification failed
@@ -293,6 +293,3 @@ function fetchComments(){
 function fetchOffers(){
 
 }
-
-
-</script>
