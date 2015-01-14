@@ -61,6 +61,7 @@
 
           <form class="form-signin">
             <h2 class="form-signin-heading">Please sign in</h2>
+            <h5 id="form-signin-subheading">You must use your tufts.edu email address</h5>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
@@ -78,11 +79,34 @@
 
       
       <div id="new-listing">
-        <h2>List a new textbook</h2>
+        <h2>List your textbook</h2>
         <form>
-          <div class="form-group">
+          <div class="btn-group">
             <label for="new-listing-dept">Department</label>
-            <input type="text" class="form-control" id="new-listing-dept" placeholder="Enter department">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="new-listing-dept">Choose a department<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+            <li><a href="#">AAST</a></li>
+            <li><a href="#">ACL</a></li>
+            <li><a href="#">AFR</a></li>
+            <li><a href="#">AMER</a></li>
+            <li><a href="#">ANTH</a></li>
+            <li><a href="#">ANW</a></li>
+            <li><a href="#">APP</a></li>
+            <li><a href="#">ARB</a></li>
+            <li><a href="#">ARCH</a></li>
+            <li><a href="#">AST</a></li>
+            <li><a href="#">BCHM</a></li>
+            <li><a href="#">BIO</a></li>
+            <li><a href="#">BIOE</a></li>
+            <li><a href="#">BME</a></li>
+            <li><a href="#">BMS</a></li>
+            <li><a href="#">CARS</a></li>
+            <li><a href="#">CBRN</a></li>
+            <li><a href="#">CBS</a></li>
+            <li><a href="#">AFR</a></li>
+            <li><a href="#">AMER</a></li>
+          </ul>
           </div>
           <div class="form-group">
             <label for="new-listing-course-number">Course Number</label>
