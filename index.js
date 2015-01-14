@@ -151,23 +151,27 @@ function newPost(){
 
 	//get data from input fields
 	//also check for errors
-	courseDept = $('new-listing-dept').val();
+
+	//check how select-option value is fetched
+	courseDept = $('#new-listing-dept-choice').val();
 	if (!courseDept||(courseDept.length>5)) {
 		return false;
 	}
-	courseNum = $('new-listing-course-number').val();
+	//
+
+	courseNum = $('#new-listing-course-number').val();
 	if (!courseDept||(courseNum.toString().length>4) {
 		return false;
 	}
-	courseSect = $('new-listing-section').val();
+	courseSect = $('#new-listing-section').val();
 	if (!courseSect||(courseSect.toString().length>2)) {
 		return false;
 	}
-	title = $('new-listing-title').val();
+	title = $('#new-listing-title').val();
 	if (!title||(title.toString().length>150)) {
 		return false;
 	}
-	price = $('new-listing-price').val();
+	price = $('#new-listing-price').val();
 	if (!price||(!isNumeric(price))) {
 		return false;
 	}
