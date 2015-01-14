@@ -151,13 +151,10 @@ function newPost(){
 
 	//get data from input fields
 	//also check for errors
-
-	//check how select-option value is fetched
 	courseDept = $('#new-listing-dept-choice').val();
 	if (!courseDept||(courseDept.length>5)) {
 		return false;
 	}
-	//
 
 	courseNum = $('#new-listing-course-number').val();
 	if (!courseDept||(courseNum.toString().length>4) {
