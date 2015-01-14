@@ -80,8 +80,15 @@ function logIn(){
 	var email;
 	var pass;
 
-	//fetch input
-
+	//fetch input and check for error
+	email = $('#inputEmail').val();
+	if (!email) {
+		return false
+	}
+	pass = $('#inputPassword').val();
+	if (!pass) {
+		return false
+	}
 
 	//login
 	myFirebaseRef.authWithPassword({
@@ -96,12 +103,15 @@ function logIn(){
 		}
 	})
 
-	//check if first time logging in
-		//initialize user if first time
-		//initUser(email);
+	//if user record does not exist, initialize user
+	myFirebaseRef.child('users').child(authVar.uid).once('value',function(data){
+		if(data==null){
+			initUser(email);
+		}
+	})
 }
 
-//initialize user
+//initialize user with email record
 function initUser(email){
 	//add email,mypostIDs,etc. under users.child(uid)
 	var uid = authVar.uid;
@@ -141,24 +151,35 @@ function newPost(){
 
 	//get data from input fields
 	//also check for errors
-	if (courseDept.length>5){
+	courseDept = $('new-listing-dept').val();
+	if (!courseDept||(courseDept.length>5)) {
 		return false;
 	}
-	if (courseNum.toString().length>4){
+	courseNum = $('new-listing-course-number').val();
+	if (!courseDept||(courseNum.toString().length>4) {
 		return false;
 	}
-	if (courseSect.toString().length>2){
+	courseSect = $('new-listing-section').val();
+	if (!courseSect||(courseSect.toString().length>2)) {
 		return false;
 	}
-	if (!courseDept){
+	title = $('new-listing-title').val();
+	if (!title||(title.toString().length>150)) {
 		return false;
 	}
-	if (!courseNum){
+	price = $('new-listing-price').val();
+	if (!price||(!isNumeric(price))) {
+		return false;
+	}
+	quality = $('#new-listing-quality').val();
+	if (!quality||(quality.toString().length>50)) {
+		return false;
+	}
+	description = $('#new-listing-description').val();
+	if (description.toString().length>500) {
 		return false;
 	}
 
-
-	//
 	//push to get an ID
 	var postRef = myFirebaseRef.child('posts').push();
 	//set to the ID
