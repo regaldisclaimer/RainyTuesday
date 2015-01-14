@@ -1,0 +1,32 @@
+#sign-in-page {
+	margin-top: 1em;
+	margin-right: 3em;
+	margin-left: 3em;
+}
+
+#new-listing {
+	margin-top: 1em;
+	margin-right: 3em;
+	margin-left: 3em;
+	margin-bottom: 60px;
+}
+
+#form-signin-subheading {
+	color: gray;
+}
+
+#new-listing-full-course-info {
+	display: inline-block;
+}
+
+#new-listing-dept {
+	margin-right: 1em;
+}
+
+#new-listing-course-number {
+	margin-right: 1em;
+}
+
+#new-listing-section {
+	margin-right: 1em;
+}
