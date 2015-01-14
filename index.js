@@ -100,15 +100,15 @@ function logIn(){
 		} else {
 			alert('Logged in successfully!');
 			authVar = authData;
-		}
-	})
 
-	//if user record does not exist, initialize user
-	myFirebaseRef.child('users').child(authVar.uid).once('value',function(data){
-		if(data==null){
-			initUser(email);
+			//if user record does not exist, initialize user
+			myFirebaseRef.child('users').child(authVar.uid).once('value',function(data){
+				if(data==null){
+					initUser(email);
+				}
+			});
 		}
-	})
+	});
 }
 
 //initialize user with email record
