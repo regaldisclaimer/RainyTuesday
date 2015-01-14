@@ -7,11 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="bootstrap/favicon.ico">
+    <link rel="stylesheet" href="style.css">
 
     <title>Deanslist</title>
 
     <!-- Bootstrap core CSS -->
-     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
@@ -30,19 +31,29 @@
   <body>
   <div>
       <div class ="header">
-              <nav class="navbar navbar-inverse navbar-fixed-top">
-              <div class="container-fluid">
-                <div id="navbar" class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav navbar-left">
-                    <li><button id="navbar-search">Search</button></li>
-                    <li><button id="navbar-new-listing">New Listing</button></li>
-                    <li>Dean's List</li>
-                    <li><button id="navbar-my-account">My Account</button></li>
-                    <li><button id="navbar-sign-out">Sign Out</button></li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
+        <nav class="navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Dean's List</a>
+            </div>
+
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <li><a href="#">Search</a></li>
+                <li><a href="#">New Listing</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
       </div>
 
       <div id="sign-in-page">
@@ -60,50 +71,68 @@
               </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-          </form>
+          <!-- </form> -->
 
         </div> <!-- /container -->
       </div> <!-- /sign-in-page -->
 
+      
       <div id="new-listing">
-        <div class="container" id="new-listing-container">
-	  <br></br>
-          <input id="new-listing-dept"></input>
-	  <br></br>
-          <input id="new-listing-course-number"></input>
-	  <br></br>
-          <input id="new-listing-section"></input>
-	  <br></br>
-          <input id="new-listing-title"></input>
-	  <br></br>
-          <input id="new-listing-price"></input>
-	  <br></br>
-	  <input id="new-listing-quality"></input>
-	  <br></br>
-	  <input id="new-listing-description"></input>
-	  <br></br>
-	  <button id="new-listing-submit">Submit</button>
-        </div>
-      </div> <!-- /new-listing -->
-
-      <div id="display-post">
-	<div class="container" id="display-post-container">
-	  <div id="display-post-title"></div>
-	  <div id="display-post-description"></div>
-	  <div id="display-post-comments"></div>
-	  <input id="display-post-new-comment"></input>
-	  <button id="display-post-post-comment">Post</button>
-	</div>
-      </div> <!-- /display-post -->
+        <h2>List a new textbook</h2>
+        <form>
+          <div class="form-group">
+            <label for="new-listing-dept">Department</label>
+            <input type="text" class="form-control" id="new-listing-dept" placeholder="Enter department">
+          </div>
+          <div class="form-group">
+            <label for="new-listing-course-number">Course Number</label>
+            <input type="text" class="form-control" id="new-listing-course-number" placeholder="Enter course number">
+          </div>
+          <div class="form-group">
+            <label for="new-listing-section">Section</label>
+            <input type="text" class="form-control" id="new-listing-section" placeholder="Enter section">
+          </div>
+          <div class="form-group">
+            <label for="new-listing-title">Title of book</label>
+            <input type="text" class="form-control" id="new-listing-title" placeholder="Enter book title">
+          </div>
+          <div class="form-group">
+            <label class="form-group" for="new-listing-price">Price (in USD)</label>
+            <div class="input-group">
+              <div class="input-group-addon">$</div>
+              <input type="text" class="form-control" id="new-listing-price" placeholder="Amount">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="new-listing-quality">Condition of book</label>
+            <input type="text" class="form-control" id="new-listing-quality" placeholder="Enter book condition">
+          </div>
+          <div class="form-group">
+            <label for="new-listing-title">Description</label>
+            <textarea type="text" class="form-control" id="new-listing-title" placeholder="Describe your textbook"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
 
       <div id="account-page">
-	<div class="container" id="account-page-container">
-	  <div id="account-page-my-listings"></div>
-	  <div id="account-page-my-offers"></div>
-	  <div id="account-page-recieved-offers"></div>
-	</div>
+      	<div class="container" id="account-page-container">
+      	  <div id="account-page-my-listings"></div>
+      	  <div id="account-page-my-offers"></div>
+      	  <div id="account-page-recieved-offers"></div>
+      	</div>
       </div> <!-- /account-page -->
     </div>
+
+    <div id="display-post">
+      <div class="container" id="display-post-container">
+        <div id="display-post-title"></div>
+        <div id="display-post-description"></div>
+        <div id="display-post-comments"></div>
+        <input id="display-post-new-comment"></input>
+        <button id="display-post-post-comment">Post</button>
+      </div>
+    </div> <!-- /display-post -->
 
 
 
@@ -114,6 +143,7 @@
     <script src="https://cdn.firebase.com/js/client/2.1.1/firebase.js"></script>
     <script src="index.js"></script>
     <script src="main.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
     
   </body>
 </html>
