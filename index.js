@@ -54,7 +54,12 @@ function changePass(){
 	var newPassRepeat;
 
  	//fetch email, old pass, new pass, new pass repeat.
-
+ 	$(document).ready(function(){
+	 	email = $('change-pass-email').val();
+	 	oldPass = $('change-pass-oldPass').val();
+	 	newPass = $('change-pass-newPass').val();
+	 	newPassRepeat =$('change-pass-newPassConfirm').val();
+ 	});
 
  	//check newPass==newPassRepeat
  	if (newPass != newPassRepeat) {
@@ -81,14 +86,17 @@ function logIn(){
 	var pass;
 
 	//fetch input and check for error
-	email = $('#inputEmail').val();
-	if (!email) {
-		return false
-	}
-	pass = $('#inputPassword').val();
-	if (!pass) {
-		return false
-	}
+	$(document).ready(function(){
+		email = $('#inputEmail').val();
+		if (!email) {
+			return false
+		}
+		pass = $('#inputPassword').val();
+		if (!pass) {
+			return false
+		}
+	});
+
 
 	//login
 	myFirebaseRef.authWithPassword({
@@ -151,35 +159,37 @@ function newPost(){
 
 	//get data from input fields
 	//also check for errors
-	courseDept = $('#new-listing-dept-choice').val();
-	if (!courseDept||(courseDept.length>5)) {
-		return false;
-	}
+	$(document).ready(function(){
+		courseDept = $('#new-listing-dept-choice').val();
+		if (!courseDept||(courseDept.length>5)) {
+			return false;
+		}
+		courseNum = $('#new-listing-course-number').val();
+		if (!courseNum||(courseNum.toString().length>4)) {
+			return false;
+		}
+		courseSect = $('#new-listing-section').val();
+		if (!courseSect||(courseSect.toString().length>2)) {
+			return false;
+		}
+		title = $('#new-listing-title').val();
+		if (!title||(title.toString().length>150)) {
+			return false;
+		}
+		price = $('#new-listing-price').val();
+		if (!price||(!isNumeric(price))) {
+			return false;
+		}
+		quality = $('#new-listing-quality').val();
+		if (!quality||(quality.toString().length>50)) {
+			return false;
+		}
+		description = $('#new-listing-description').val();
+		if (description.toString().length>500) {
+			return false;
+		}
+	});
 
-	courseNum = $('#new-listing-course-number').val();
-	if (!courseNum||(courseNum.toString().length>4)) {
-		return false;
-	}
-	courseSect = $('#new-listing-section').val();
-	if (!courseSect||(courseSect.toString().length>2)) {
-		return false;
-	}
-	title = $('#new-listing-title').val();
-	if (!title||(title.toString().length>150)) {
-		return false;
-	}
-	price = $('#new-listing-price').val();
-	if (!price||(!isNumeric(price))) {
-		return false;
-	}
-	quality = $('#new-listing-quality').val();
-	if (!quality||(quality.toString().length>50)) {
-		return false;
-	}
-	description = $('#new-listing-description').val();
-	if (description.toString().length>500) {
-		return false;
-	}
 
 	//push to get an ID
 	var postRef = myFirebaseRef.child('posts').push();
