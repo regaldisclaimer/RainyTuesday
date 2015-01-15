@@ -318,7 +318,7 @@ function fetchOffers(){
 }
 
 // Transition functions
-$(document).on('ready', function() {
+$(document).ready(function() {
 	// Commented entries need to be added in HTML
 	pageDivs['login'] = $('#sign-in-page');
 	pageDivs['newPost'] = $('#new-listing');
