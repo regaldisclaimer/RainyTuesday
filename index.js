@@ -7,6 +7,7 @@
 var myFirebaseRef = new Firebase("https://deans.firebaseio.com/");
 var authVar;
 var isAuthenticated;
+var pageDivs = {};
 
 
 //Update authentication status
@@ -25,8 +26,10 @@ function authDataCallback(authData) {
 	if (authData) {
 		authVar = authData;
 		isAuthenticated = true;
+		showListings();
 	} else {
 		isAuthenticated = false;
+		showLogin();
 	}
 }
 
@@ -125,6 +128,7 @@ function logIn(){
 
 //initialize user with email record
 function initUser(email){
+	// TODO: initialization doesn't happen, please fix
 	//add email,mypostIDs,etc. under users.child(uid)
 	var uid = authVar.uid;
 	myFirebaseRef.child('users').child('uid').set({
@@ -313,34 +317,63 @@ function fetchOffers(){
 
 }
 
-
-
 // Transition functions
+$(document).on('ready', funciton() {
+	// Commented entries need to be added in HTML
+	pageDivs['login'] = $('#sign-in-page');
+	pageDivs['newPost'] = $('#new-listing');
+	// pageDivs['listings'] = $('#search-listings');
+	pageDivs['myAccount'] = $('#account-page');
+	pageDivs['displayPost'] = $('#display-post');
+	// pageDivs['signup'] = $('#sign-up');
+	// pageDivs['changePass'] = $('#change-password');
+	// pageDivs['createOffer'] = $('#create-offer');
+	pageDivs[4] = $('#tempForDebug'); // TODO: change to real names later
+});
+
+function hideAll() {
+	for (var i = 0; i < pageDivs.length-1; i++) {
+		pageDivs[i].hide();
+	}
+}
+
 function showListings() {
 	// Based on search, show lots of posts
-	
+	hideAll();
+	// TODO: To be added
 }
 
 function showLogin() {
-
+	hideAll();
+	pageDivs['login'].show();
 }
 
-function showSignup() {
-
+function showNewPost() {
+	hideAll();
+	pageDivs['newPost'].show();
 }
 
-function showChangePass() {
+// function showSignup() {
+// 	hideAll();
+// 	pageDivs['signup'];
+// }
 
-}
+// function showChangePass() {
+// 	hideAll();
+// 	pageDivs['changePass'].show();
+// }
 
 function showPost(postID) {
-
+	hideAll();
+	pageDivs['displayPost'].show();
 }
 
 function showMyAccount() {
-
+	hideAll();
+	pageDivs['myAccount'];
 }
 
 function showCreateOffer(postID) {
-
+	hideAll();
+	pageDivs['createOffer'].show();
 }
