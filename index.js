@@ -339,6 +339,7 @@ function hideAll() {
 	// DO NOT RUN ALONE. DOES NOT CHECK FOR DOC READY
 	// 							(AND SHOULDN'T)
 	for (var key in pageDivs) {
+		pageDivs[key].css('visibility', 'hidden');
 		pageDivs[key].hide();
 	}
 }
@@ -354,6 +355,7 @@ function showListings() {
 function showLogin() {
 	$(document).ready(function() {
 		hideAll();
+		pageDivs['login'].css('visibility', 'visible');
 		pageDivs['login'].show();
 	});
 }
@@ -361,6 +363,7 @@ function showLogin() {
 function showNewPost() {
 	$(document).ready(function() {
 		hideAll();
+		pageDivs['newPost'].css('visibility', 'visible');
 		pageDivs['newPost'].show();
 	});
 }
@@ -368,20 +371,23 @@ function showNewPost() {
 // function showSignup() {
 // 	$(document).ready(function() {
 // 		hideAll();
-// 		pageDivs['signup'];
+//		pageDivs['signup'].css('visibility', 'visible');
+// 		pageDivs['signup'].show();
 // 	});
 // }
 
 // function showChangePass() {
 // 	$(document).ready(function() {
 // 		hideAll();
-// 		pageDivs['changePass'].show();
+// 		pageDivs['changePass'].css('visibility', 'visible');
+//		pageDivs['changePass'].show();
 // 	});
 // }
 
 function showPost(postID) {
 	$(document).ready(function() {
 		hideAll();
+		pageDivs['displayPost'].css('visibility', 'visible');
 		pageDivs['displayPost'].show();
 	});
 }
@@ -389,6 +395,7 @@ function showPost(postID) {
 function showMyAccount() {
 	$(document).ready(function() {
 		hideAll();
+		pageDivs['myAccount'].css('visibility', 'visible');
 		pageDivs['myAccount'].show();
 	});
 }
@@ -396,6 +403,7 @@ function showMyAccount() {
 function showCreateOffer(postID) {
 	$(document).ready(function() {
 		hideAll();
+		pageDivs['createOffer'].css('visibility', 'visible');
 		pageDivs['createOffer'].show();
 	});
 }
