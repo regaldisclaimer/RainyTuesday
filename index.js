@@ -38,8 +38,8 @@ function createUser(){
 		emailVar = $('#create-user-email').val();
 		//POST to server to create user
 		$.post("https://deanslist.herokuapp.com/createUser", {email:emailVar}, function(err){
-			if (err) {
-				alert(err);
+			if (err.error==true) {
+				alert(err.error);
 				alert('There was an error with creating user. Please use your tufts email!');
 			} else {
 				alert('User created successfully, Check your email to set password!');
