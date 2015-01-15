@@ -312,3 +312,35 @@ function fetchComments(){
 function fetchOffers(){
 
 }
+
+
+
+// Transition functions
+function showListings() {
+	// Based on search, show lots of posts
+	
+}
+
+function showLogin() {
+
+}
+
+function showSignup() {
+
+}
+
+function showChangePass() {
+
+}
+
+function showPost(postID) {
+
+}
+
+function showMyAccount() {
+
+}
+
+function showCreateOffer(postID) {
+
+}
