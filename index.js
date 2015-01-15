@@ -31,17 +31,19 @@ function authDataCallback(authData) {
 
 // Create user via server
 function createUser(){
-	var email;
+	var emailVar;
 
 	//get email address
-
-	//POST to server to create user
-	$.post("https://deanslist.herokuapp.com/createUser", {email:email}, function(err){
-		if (err) {
-			alert('There was an error with creating user. Please use your tufts email!');
-		} else {
-			alert('User created successfully, Check your email to set password!');
-		}
+	$(document).ready(function(){
+		emailVar = $('#create-user-email').val();
+		//POST to server to create user
+		$.post("https://deanslist.herokuapp.com/createUser", {email:email}, function(err){
+			if (err) {
+				alert('There was an error with creating user. Please use your tufts email!');
+			} else {
+				alert('User created successfully, Check your email to set password!');
+			}
+		});
 	});
 }
 
@@ -55,29 +57,28 @@ function changePass(){
 
  	//fetch email, old pass, new pass, new pass repeat.
  	$(document).ready(function(){
-	 	emailVar = $('change-pass-email').val();
-	 	oldPass = $('change-pass-oldPass').val();
-	 	newPass = $('change-pass-newPass').val();
-	 	newPassRepeat =$('change-pass-newPassConfirm').val();
+	 	emailVar = $('#change-pass-email').val();
+	 	oldPass = $('#change-pass-oldPass').val();
+	 	newPass = $('#change-pass-newPass').val();
+	 	newPassRepeat =$('#change-pass-newPassConfirm').val();
+	 	//check newPass==newPassRepeat
+	 	if (newPass != newPassRepeat) {
+	 		alert('New Passwords do not match... Please type them again!');
+	 	} else {
+	 		//change password
+			myFirebaseRef.changePassword({
+				email: emailVar,
+				oldPassword: oldPass,
+				newPassword: newPass,
+			}, function(error) {
+				if (error === null) {
+					//pass changed successfully
+				} else {
+					//error changing password
+				}
+			})
+		}
  	});
-
- 	//check newPass==newPassRepeat
- 	if (newPass != newPassRepeat) {
- 		alert('New Passwords do not match... Please type them again!');
- 	} else {
- 		//change password
-		myFirebaseRef.changePassword({
-			email: emailVar,
-			oldPassword: oldPass,
-			newPassword: newPass,
-		}, function(error) {
-			if (error === null) {
-				//pass changed successfully
-			} else {
-				//error changing password
-			}
-		})
-	}
 }
 
 //user authentication
@@ -95,27 +96,26 @@ function logIn(){
 		if (!pass) {
 			return false
 		}
-	});
 
+		//login
+		myFirebaseRef.authWithPassword({
+			email: email,
+			password: pass,
+		}, function(error,authData) {
+			if (error) {
+				alert('error');
+			} else {
+				alert('Logged in successfully!');
+				authVar = authData;
 
-	//login
-	myFirebaseRef.authWithPassword({
-		email: email,
-		password: pass,
-	}, function(error,authData) {
-		if (error) {
-			alert('error');
-		} else {
-			alert('Logged in successfully!');
-			authVar = authData;
-
-			//if user record does not exist, initialize user
-			myFirebaseRef.child('users').child(authVar.uid).once('value',function(data){
-				if(data==null){
-					initUser(email);
-				}
-			});
-		}
+				//if user record does not exist, initialize user
+				myFirebaseRef.child('users').child(authVar.uid).once('value',function(data){
+					if(data==null){
+						initUser(email);
+					}
+				});
+			}
+		});
 	});
 }
 
@@ -188,32 +188,31 @@ function newPost(){
 		if (description.toString().length>500) {
 			return false;
 		}
+	
+		//push to get an ID
+		var postRef = myFirebaseRef.child('posts').push();
+		//set to the ID
+		postRef.set({
+			//
+			uid: uid,
+			title: title,
+			price: price,
+			quality: quality,
+			description: description,
+			time: time,
+		},function(err){
+			//
+			alert(err);
+		});
+		var URLsegments = postRef.toString().split('/');
+		var pID = URLsegments[URLsegments.length-1];
+		//save the text name under "$course" and "$postID2" with appropriate dir name
+		myFirebaseRef.child('courses').child(courseString).child(pID).set({
+			textName: title
+		});
+		//add the text ID under the user's 'myPostIDs'
+		myFirebaseRef.child('users').child(uid).child('myPostIDs').child(pID).set(pID);
 	});
-
-
-	//push to get an ID
-	var postRef = myFirebaseRef.child('posts').push();
-	//set to the ID
-	postRef.set({
-		//
-		uid: uid,
-		title: title,
-		price: price,
-		quality: quality,
-		description: description,
-		time: time,
-	},function(err){
-		//
-		alert(err);
-	});
-	var URLsegments = postRef.toString().split('/');
-	var pID = URLsegments[URLsegments.length-1];
-	//save the text name under "$course" and "$postID2" with appropriate dir name
-	myFirebaseRef.child('courses').child(courseString).child(pID).set({
-		textName: title
-	});
-	//add the text ID under the user's 'myPostIDs'
-	myFirebaseRef.child('users').child(uid).child('myPostIDs').child(pID).set(pID);
 }
 
 // Create new offer

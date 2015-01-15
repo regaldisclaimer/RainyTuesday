@@ -285,11 +285,16 @@
 
 
     <div id='tempForDebug'>
+      <p>Change Password</p>
       <input id='change-pass-email' type='text' placeholder='email'/>
-      <input id='change-pass-oldPass' type='text' placeholder='old password' />
-      <input id='change-pass-newPass' type='text' placeholder='new password'/>
-      <input id='change-pass-newPassConfirm' type='text' placeholder='confirm new'/>
-      <input type ='button' onclick='changePass()'>Change Password</input>
+      <input id='change-pass-oldPass' type='password' placeholder='old password' />
+      <input id='change-pass-newPass' type='password' placeholder='new password'/>
+      <input id='change-pass-newPassConfirm' type='password' placeholder='confirm new'/>
+      <input type='button' onclick='changePass()'>Change Password</input>
+      <hr />
+      <p>Create user</p>
+      <input id='create-user-email' type='text' placeholder='email' />
+      <input type='button' onclick='createUser()'>Create User</input>
     </div>
 
 
