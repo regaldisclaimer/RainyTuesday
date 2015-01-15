@@ -37,7 +37,7 @@ function createUser(){
 	$(document).ready(function(){
 		emailVar = $('#create-user-email').val();
 		//POST to server to create user
-		$.post("https://deanslist.herokuapp.com/createUser", {email:email}, function(err){
+		$.post("https://deanslist.herokuapp.com/createUser", {email:emailVar}, function(err){
 			if (err) {
 				alert('There was an error with creating user. Please use your tufts email!');
 			} else {
@@ -73,8 +73,10 @@ function changePass(){
 			}, function(error) {
 				if (error === null) {
 					//pass changed successfully
+					alert('change succesfully');
 				} else {
 					//error changing password
+					alert('there was an error changing password');
 				}
 			})
 		}
@@ -188,7 +190,7 @@ function newPost(){
 		if (description.toString().length>500) {
 			return false;
 		}
-	
+
 		//push to get an ID
 		var postRef = myFirebaseRef.child('posts').push();
 		//set to the ID
