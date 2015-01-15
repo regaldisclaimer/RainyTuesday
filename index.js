@@ -281,7 +281,7 @@ function newOffer(){
 		message: message,
 		//URL currently meaningless, as there's no routing in this single page app
 		postPath: ""
-	})
+	});
 
 }
 
@@ -328,12 +328,12 @@ $(document).on('ready', function() {
 	// pageDivs['signup'] = $('#sign-up');
 	// pageDivs['changePass'] = $('#change-password');
 	// pageDivs['createOffer'] = $('#create-offer');
-	pageDivs[4] = $('#tempForDebug'); // TODO: change to real names later
+	pageDivs['debug'] = $('#tempForDebug'); // TODO: change to real names later
 });
 
 function hideAll() {
-	for (var i = 0; i < pageDivs.length-1; i++) {
-		pageDivs[i].hide();
+	for (var key in pageDivs) {
+		pageDivs[key].hide();
 	}
 }
 
