@@ -23,6 +23,7 @@ myFirebaseRef.onAuth(authDataCallback);
 //Monitor authentication
 function authDataCallback(authData) {
 	if (authData) {
+		authVar = authData;
 		isAuthenticated = true;
 	} else {
 		isAuthenticated = false;
