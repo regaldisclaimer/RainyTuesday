@@ -60,7 +60,7 @@
           </nav>
         </div>
 
-        <div id="sign-in-page">
+        <div id="sign-in-page" style="visibility:hidden;">
           <div class="container" id="sign-in-page-container">
 
             <form class="form-signin">
@@ -81,13 +81,13 @@
         </div> <!-- /sign-in-page -->
 
 
-        <div id="new-listing" style="display:hidden;">
+        <div id="new-listing" style="visibility:hidden;">
           <h2>List your textbook</h2>
           <form>
             <div class="form-group form-inline" id="new-listing-full-course-info">
               <div class="form-group" id="new-listing-dept">
                 <label for="new-listing-dept-choice">Subject </label>
-                <select id="new-listing-dept-choice">
+                <select class="new-listing-input" id="new-listing-dept-choice">
                   <option>AAST</option>
                   <option>ACL</option>
                   <option>AFR</option>
@@ -228,37 +228,37 @@
               </div>
               <div class="form-group">
                 <label for="new-listing-course-number">Course Number</label>
-                <input type="text" class="form-control" id="new-listing-course-number" placeholder="Enter course number">
+                <input type="text" class="form-control new-listing-field" id="new-listing-course-number" placeholder="Enter course number">
               </div>
               <div class="form-group">
                 <label for="new-listing-section">Section</label>
-                <input type="text" class="form-control" id="new-listing-section" placeholder="Enter section">
+                <input type="text" class="form-control new-listing-field" id="new-listing-section" placeholder="Enter section">
               </div>
             </div> <!-- /new-listing-full-course-info -->
             <div class="form-group">
               <label for="new-listing-title">Title of book</label>
-              <input type="text" class="form-control" id="new-listing-title" placeholder="Enter book title">
+              <input type="text" class="form-control new-listing-field" id="new-listing-title" placeholder="Enter book title">
             </div>
             <div class="form-group">
               <label class="form-group" for="new-listing-price">Price (in USD)</label>
               <div class="input-group">
                 <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="new-listing-price" placeholder="Amount">
+                <input type="text" class="form-control new-listing-field" id="new-listing-price" placeholder="Amount">
               </div>
             </div>
             <div class="form-group">
               <label for="new-listing-quality">Condition of book</label>
-              <input type="text" class="form-control" id="new-listing-quality" placeholder="Enter book condition">
+              <input type="text" class="form-control new-listing-field" id="new-listing-quality" placeholder="Enter book condition">
             </div>
             <div class="form-group">
               <label for="new-listing-description">Description</label>
-              <textarea type="text" class="form-control" id="new-listing-description" placeholder="Describe your textbook"></textarea>
+              <textarea type="text" class="form-control new-listing-field" id="new-listing-description" placeholder="Describe your textbook"></textarea>
             </div>
             <button type="button" class="btn btn-default" onclick='newPost()'>Submit</button>
           </form>
         </div>
 
-        <div id="account-page" style="display:hidden;">
+        <div id="account-page" style="visibility:hidden;">
           <div class="container" id="account-page-container">
             <div id="account-page-my-listings"></div>
             <div id="account-page-my-offers"></div>
@@ -267,7 +267,7 @@
         </div> <!-- /account-page -->
         
 
-        <div id="display-post" style="display:hidden;">
+        <div id="display-post" style="visibility:hidden;">
           <div class="container" id="display-post-container">
             <div id="display-post-title"></div>
             <div id="display-post-description"></div>
@@ -283,7 +283,7 @@
         <!-- Add div for rejecting and accepting offers -->
 
 
-        <div id='tempForDebug' style="display:hidden;">
+        <div id='tempForDebug' style="visibility:hidden;">
           <p>Change Password</p>
           <input id='change-pass-email' type='text' placeholder='email'/>
           <input id='change-pass-oldPass' type='password' placeholder='old password' />

@@ -230,7 +230,12 @@ function newPost(){
 			time: time,
 		},function(err){
 			//
-			alert(err);
+			if (err) {
+				alert(err);
+			} else {
+				$('.new-listing-field').val('');
+				$('#new-listing-dept-choice').val($('#new-listing-dept-choice option:first').val());
+			}
 		});
 		var URLsegments = postRef.toString().split('/');
 		var pID = URLsegments[URLsegments.length-1];
