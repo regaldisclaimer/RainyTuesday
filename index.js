@@ -179,7 +179,7 @@ function newPost(){
 			return false;
 		}
 		price = $('#new-listing-price').val();
-		if (!price||(!isNumeric(price))) {
+		if (!price||(!IsNumeric(price))) {
 			return false;
 		}
 		quality = $('#new-listing-quality').val();
