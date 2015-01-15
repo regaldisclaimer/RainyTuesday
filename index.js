@@ -9,6 +9,19 @@ var authVar;
 var isAuthenticated;
 var pageDivs = {};
 
+// Transition functions
+$(document).ready(function() {
+	// Commented entries need to be added in HTML
+	pageDivs['login'] = $('#sign-in-page');
+	pageDivs['newPost'] = $('#new-listing');
+	// pageDivs['listings'] = $('#search-listings');
+	pageDivs['myAccount'] = $('#account-page');
+	pageDivs['displayPost'] = $('#display-post');
+	// pageDivs['signup'] = $('#sign-up');
+	// pageDivs['changePass'] = $('#change-password');
+	// pageDivs['createOffer'] = $('#create-offer');
+	pageDivs['debug'] = $('#tempForDebug'); // TODO: change to real names later
+});
 
 //Update authentication status
 myFirebaseRef.onAuth(authDataCallback);
@@ -90,6 +103,7 @@ function changePass(){
 
 //user authentication
 function logIn(){
+	// TODO: at end, on successful login, remove user/pass from inputs
 	var email;
 	var pass;
 
@@ -300,7 +314,6 @@ function rejectOffer(){
 
 }
 
-
 function fetchCourses(){
 
 }
@@ -317,26 +330,12 @@ function fetchOffers(){
 
 }
 
-// Transition functions
-$(document).ready(function() {
-	// Commented entries need to be added in HTML
-	pageDivs['login'] = $('#sign-in-page');
-	pageDivs['newPost'] = $('#new-listing');
-	// pageDivs['listings'] = $('#search-listings');
-	pageDivs['myAccount'] = $('#account-page');
-	pageDivs['displayPost'] = $('#display-post');
-	// pageDivs['signup'] = $('#sign-up');
-	// pageDivs['changePass'] = $('#change-password');
-	// pageDivs['createOffer'] = $('#create-offer');
-	pageDivs['debug'] = $('#tempForDebug'); // TODO: change to real names later
-});
-
 function hideAll() {
-	$(document).ready(function() {
-		for (var key in pageDivs) {
-			pageDivs[key].hide();
-		}
-	});
+	// DO NOT RUN ALONE. DOES NOT CHECK FOR DOC READY
+	// 							(AND SHOULDN'T)
+	for (var key in pageDivs) {
+		pageDivs[key].hide();
+	}
 }
 
 function showListings() {
@@ -385,7 +384,7 @@ function showPost(postID) {
 function showMyAccount() {
 	$(document).ready(function() {
 		hideAll();
-		pageDivs['myAccount'];
+		pageDivs['myAccount'].show();
 	});
 }
 
