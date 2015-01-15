@@ -179,7 +179,11 @@ function newPost(){
 			return false;
 		}
 		price = $('#new-listing-price').val();
-		if (!price||(!($.isNumeric(price)))) {
+		//parse out commas
+		price.toString();
+		price.replace(',', '');
+		price = Number(price);
+		if (!price||(isNaN(price))) {
 			return false;
 		}
 		quality = $('#new-listing-quality').val();
