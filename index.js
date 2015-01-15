@@ -179,7 +179,7 @@ function newPost(){
 			return false;
 		}
 		price = $('#new-listing-price').val();
-		if (!price||(!($.isNumeric(price))) {
+		if (!price||(!($.isNumeric(price)))) {
 			return false;
 		}
 		quality = $('#new-listing-quality').val();
@@ -190,7 +190,6 @@ function newPost(){
 		if (description.toString().length>500) {
 			return false;
 		}
-
 
 		//format course name
 		//NEEDS UPDATE APPENDING ZEROS
