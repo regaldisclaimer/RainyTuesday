@@ -48,14 +48,14 @@ function createUser(){
 
 // Change password. required for account creation
 function changePass(){
-	var email;
+	var emailVar;
 	var oldPass;
 	var newPass;
 	var newPassRepeat;
 
  	//fetch email, old pass, new pass, new pass repeat.
  	$(document).ready(function(){
-	 	email = $('change-pass-email').val();
+	 	emailVar = $('change-pass-email').val();
 	 	oldPass = $('change-pass-oldPass').val();
 	 	newPass = $('change-pass-newPass').val();
 	 	newPassRepeat =$('change-pass-newPassConfirm').val();
@@ -67,7 +67,7 @@ function changePass(){
  	} else {
  		//change password
 		myFirebaseRef.changePassword({
-			email: email,
+			email: emailVar,
 			oldPassword: oldPass,
 			newPassword: newPass,
 		}, function(error) {
