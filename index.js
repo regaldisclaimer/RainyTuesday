@@ -151,10 +151,6 @@ function newPost(){
 	var description;
 	var time;
 	var courseString;
-	//format course name
-	courseDept = courseDept.toUpperCase();
-	
-	courseString:'';
 
 	//assign known data
 	uid = authVar.uid;
@@ -170,6 +166,8 @@ function newPost(){
 		courseNum = $('#new-listing-course-number').val();
 		if (!courseNum||(courseNum.toString().length>4)) {
 			return false;
+		} else {
+
 		}
 		courseSect = $('#new-listing-section').val();
 		if (!courseSect||(courseSect.toString().length>2)) {
@@ -191,6 +189,11 @@ function newPost(){
 		if (description.toString().length>500) {
 			return false;
 		}
+
+
+		//format course name
+		//NEEDS UPDATE APPENDING ZEROS
+		courseString = courseDept+courseNum+courseSect;
 
 		//push to get an ID
 		var postRef = myFirebaseRef.child('posts').push();
