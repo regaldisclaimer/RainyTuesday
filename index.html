@@ -34,239 +34,238 @@
     </head>
 
     <body>
-      <div>
-        <div class ="header">
-          <nav class="navbar-default">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Dean's List</a>
-              </div>
-
-              <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="dropdown">
-                    <li><a href="#">Search</a></li>
-                    <li><a href="#">New Listing</a></li>
-                    <li><a href="#">My Account</a></li>
-                    <li><a href="#" onclick='logOut()'>Sign Out</a></li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
-          </div>
-
-          <div id="sign-in-page">
-            <div class="container" id="sign-in-page-container">
-
-              <form class="form-signin">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <h5 id="form-signin-subheading">You must use your tufts.edu email address</h5>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                  </label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block" type="button" onclick='logIn()'>Sign in</button>
-              </form>
-            </div> <!-- /container -->
-          </div> <!-- /sign-in-page -->
-
-          
-          <div id="new-listing" style="display:none;">
-            <h2>List your textbook</h2>
-            <form>
-              <div class="form-group form-inline" id="new-listing-full-course-info">
-                <div class="form-group" id="new-listing-dept">
-                  <label for="new-listing-dept-choice">Subject </label>
-                  <select id="new-listing-dept-choice">
-                    <option>AAST</option>
-                    <option>ACL</option>
-                    <option>AFR</option>
-                    <option>AMER</option>
-                    <option>ANTH</option>
-                    <option>ANW</option>
-                    <option>APP</option>
-                    <option>ARB</option>
-                    <option>ARCH</option>
-                    <option>AST</option>
-                    <option>BCHM</option>
-                    <option>BIO</option>
-                    <option>BIOE</option>
-                    <option>BME</option>
-                    <option>BMS</option>
-                    <option>CARS</option>
-                    <option>CBRN</option>
-                    <option>CBS</option>
-                    <option>CBUN</option>
-                    <option>CD</option>
-                    <option>CEE</option>
-                    <option>CEMR</option>
-                    <option>CFLR</option>
-                    <option>CH</option>
-                    <option>CHBE</option>
-                    <option>CHEM</option>
-                    <option>CHNS</option>
-                    <option>CIS</option>
-                    <option>CIV</option>
-                    <option>CLS</option>
-                    <option>CMBA</option>
-                    <option>CMDB</option>
-                    <option>CMP</option>
-                    <option>CMPH</option>
-                    <option>CMS</option>
-                    <option>CNUT</option>
-                    <option>COMP</option>
-                    <option>CRBC</option>
-                    <option>CRBR</option>
-                    <option>CRBU</option>
-                    <option>CRHA</option>
-                    <option>CRUM</option>
-                    <option>CSAK</option>
-                    <option>CSS</option>
-                    <option>CST</option>
-                    <option>CTS</option>
-                    <option>DEGR</option>
-                    <option>DENT</option>
-                    <option>DHP</option>
-                    <option>DIP</option>
-                    <option>DNC</option>
-                    <option>DR</option>
-                    <option>DRMD</option>
-                    <option>EC</option>
-                    <option>ED</option>
-                    <option>EDS</option>
-                    <option>EE</option>
-                    <option>EIB</option>
-                    <option>ELS</option>
-                    <option>EM</option>
-                    <option>EN</option>
-                    <option>ENG</option>
-                    <option>ENGS</option>
-                    <option>ENP</option>
-                    <option>ENV</option>
-                    <option>EOS</option>
-                    <option>ES</option>
-                    <option>EXP</option>
-                    <option>FAH</option>
-                    <option>FAHS</option>
-                    <option>FAM</option>
-                    <option>FAMB</option>
-                    <option>FAMD</option>
-                    <option>FAS</option>
-                    <option>FR</option>
-                    <option>GENE</option>
-                    <option>GER</option>
-                    <option>GIS</option>
-                    <option>GMA</option>
-                    <option>GRK</option>
-                    <option>HCOM</option>
-                    <option>HEB</option>
-                    <option>HIST</option>
-                    <option>IDIS</option>
-                    <option>ILO</option>
-                    <option>ILVS</option>
-                    <option>IMM</option>
-                    <option>INTR</option>
-                    <option>IR</option>
-                    <option>ISP</option>
-                    <option>ITAL</option>
-                    <option>JPN</option>
-                    <option>JS</option>
-                    <option>LAM</option>
-                    <option>LAS</option>
-                    <option>LAT</option>
-                    <option>LING</option>
-                    <option>LMS</option>
-                    <option>LST</option>
-                    <option>MATH</option>
-                    <option>MBS</option>
-                    <option>MCM</option>
-                    <option>ME</option>
-                    <option>ML</option>
-                    <option>MMB</option>
-                    <option>MUS</option>
-                    <option>NRAK</option>
-                    <option>NRSC</option>
-                    <option>NU</option>
-                    <option>NUTB</option>
-                    <option>NUTC</option>
-                    <option>NUTR</option>
-                    <option>OTS</option>
-                    <option>PA</option>
-                    <option>PE</option>
-                    <option>PH</option>
-                    <option>PHIL</option>
-                    <option>PHY</option>
-                    <option>PJS</option>
-                    <option>POR</option>
-                    <option>PPET</option>
-                    <option>PREP</option>
-                    <option>PS</option>
-                    <option>PSY</option>
-                    <option>REL</option>
-                    <option>RUS</option>
-                    <option>SK</option>
-                    <option>SKMD</option>
-                    <option>SOC</option>
-                    <option>SPN</option>
-                    <option>SWA</option>
-                    <option>UEP</option>
-                    <option>VET</option>
-                    <option>VISC</option>
-                    <option>WGSS</option>
-                    <option>WL</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="new-listing-course-number">Course Number</label>
-                  <input type="text" class="form-control" id="new-listing-course-number" placeholder="Enter course number">
-                </div>
-                <div class="form-group">
-                  <label for="new-listing-section">Section</label>
-                  <input type="text" class="form-control" id="new-listing-section" placeholder="Enter section">
-                </div>
-              </div> <!-- /new-listing-full-course-info -->
-              <div class="form-group">
-                <label for="new-listing-title">Title of book</label>
-                <input type="text" class="form-control" id="new-listing-title" placeholder="Enter book title">
-              </div>
-              <div class="form-group">
-                <label class="form-group" for="new-listing-price">Price (in USD)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">$</div>
-                  <input type="text" class="form-control" id="new-listing-price" placeholder="Amount">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="new-listing-quality">Condition of book</label>
-                <input type="text" class="form-control" id="new-listing-quality" placeholder="Enter book condition">
-              </div>
-              <div class="form-group">
-                <label for="new-listing-description">Description</label>
-                <textarea type="text" class="form-control" id="new-listing-description" placeholder="Describe your textbook"></textarea>
-              </div>
-              <button type="button" class="btn btn-default" onclick='newPost()'>Submit</button>
-            </form>
-          </div>
-
-          <div id="account-page" style="display:none;">
-            <div class="container" id="account-page-container">
-              <div id="account-page-my-listings"></div>
-              <div id="account-page-my-offers"></div>
-              <div id="account-page-recieved-offers"></div>
+      <div class ="header">
+        <nav class="navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Dean's List</a>
             </div>
-          </div> <!-- /account-page -->
+
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <li><a href="#">Search</a></li>
+                  <li><a href="#">New Listing</a></li>
+                  <li><a href="#">My Account</a></li>
+                  <li><a href="#" onclick='logOut()'>Sign Out</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
         </div>
+
+        <div id="sign-in-page">
+          <div class="container" id="sign-in-page-container">
+
+            <form class="form-signin">
+              <h2 class="form-signin-heading">Please sign in</h2>
+              <h5 id="form-signin-subheading">You must use your tufts.edu email address</h5>
+              <label for="inputEmail" class="sr-only">Email address</label>
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="remember-me"> Remember me
+                </label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" type="button" onclick='logIn()'>Sign in</button>
+            </form>
+          </div> <!-- /container -->
+        </div> <!-- /sign-in-page -->
+
+
+        <div id="new-listing" style="display:none;">
+          <h2>List your textbook</h2>
+          <form>
+            <div class="form-group form-inline" id="new-listing-full-course-info">
+              <div class="form-group" id="new-listing-dept">
+                <label for="new-listing-dept-choice">Subject </label>
+                <select id="new-listing-dept-choice">
+                  <option>AAST</option>
+                  <option>ACL</option>
+                  <option>AFR</option>
+                  <option>AMER</option>
+                  <option>ANTH</option>
+                  <option>ANW</option>
+                  <option>APP</option>
+                  <option>ARB</option>
+                  <option>ARCH</option>
+                  <option>AST</option>
+                  <option>BCHM</option>
+                  <option>BIO</option>
+                  <option>BIOE</option>
+                  <option>BME</option>
+                  <option>BMS</option>
+                  <option>CARS</option>
+                  <option>CBRN</option>
+                  <option>CBS</option>
+                  <option>CBUN</option>
+                  <option>CD</option>
+                  <option>CEE</option>
+                  <option>CEMR</option>
+                  <option>CFLR</option>
+                  <option>CH</option>
+                  <option>CHBE</option>
+                  <option>CHEM</option>
+                  <option>CHNS</option>
+                  <option>CIS</option>
+                  <option>CIV</option>
+                  <option>CLS</option>
+                  <option>CMBA</option>
+                  <option>CMDB</option>
+                  <option>CMP</option>
+                  <option>CMPH</option>
+                  <option>CMS</option>
+                  <option>CNUT</option>
+                  <option>COMP</option>
+                  <option>CRBC</option>
+                  <option>CRBR</option>
+                  <option>CRBU</option>
+                  <option>CRHA</option>
+                  <option>CRUM</option>
+                  <option>CSAK</option>
+                  <option>CSS</option>
+                  <option>CST</option>
+                  <option>CTS</option>
+                  <option>DEGR</option>
+                  <option>DENT</option>
+                  <option>DHP</option>
+                  <option>DIP</option>
+                  <option>DNC</option>
+                  <option>DR</option>
+                  <option>DRMD</option>
+                  <option>EC</option>
+                  <option>ED</option>
+                  <option>EDS</option>
+                  <option>EE</option>
+                  <option>EIB</option>
+                  <option>ELS</option>
+                  <option>EM</option>
+                  <option>EN</option>
+                  <option>ENG</option>
+                  <option>ENGS</option>
+                  <option>ENP</option>
+                  <option>ENV</option>
+                  <option>EOS</option>
+                  <option>ES</option>
+                  <option>EXP</option>
+                  <option>FAH</option>
+                  <option>FAHS</option>
+                  <option>FAM</option>
+                  <option>FAMB</option>
+                  <option>FAMD</option>
+                  <option>FAS</option>
+                  <option>FR</option>
+                  <option>GENE</option>
+                  <option>GER</option>
+                  <option>GIS</option>
+                  <option>GMA</option>
+                  <option>GRK</option>
+                  <option>HCOM</option>
+                  <option>HEB</option>
+                  <option>HIST</option>
+                  <option>IDIS</option>
+                  <option>ILO</option>
+                  <option>ILVS</option>
+                  <option>IMM</option>
+                  <option>INTR</option>
+                  <option>IR</option>
+                  <option>ISP</option>
+                  <option>ITAL</option>
+                  <option>JPN</option>
+                  <option>JS</option>
+                  <option>LAM</option>
+                  <option>LAS</option>
+                  <option>LAT</option>
+                  <option>LING</option>
+                  <option>LMS</option>
+                  <option>LST</option>
+                  <option>MATH</option>
+                  <option>MBS</option>
+                  <option>MCM</option>
+                  <option>ME</option>
+                  <option>ML</option>
+                  <option>MMB</option>
+                  <option>MUS</option>
+                  <option>NRAK</option>
+                  <option>NRSC</option>
+                  <option>NU</option>
+                  <option>NUTB</option>
+                  <option>NUTC</option>
+                  <option>NUTR</option>
+                  <option>OTS</option>
+                  <option>PA</option>
+                  <option>PE</option>
+                  <option>PH</option>
+                  <option>PHIL</option>
+                  <option>PHY</option>
+                  <option>PJS</option>
+                  <option>POR</option>
+                  <option>PPET</option>
+                  <option>PREP</option>
+                  <option>PS</option>
+                  <option>PSY</option>
+                  <option>REL</option>
+                  <option>RUS</option>
+                  <option>SK</option>
+                  <option>SKMD</option>
+                  <option>SOC</option>
+                  <option>SPN</option>
+                  <option>SWA</option>
+                  <option>UEP</option>
+                  <option>VET</option>
+                  <option>VISC</option>
+                  <option>WGSS</option>
+                  <option>WL</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="new-listing-course-number">Course Number</label>
+                <input type="text" class="form-control" id="new-listing-course-number" placeholder="Enter course number">
+              </div>
+              <div class="form-group">
+                <label for="new-listing-section">Section</label>
+                <input type="text" class="form-control" id="new-listing-section" placeholder="Enter section">
+              </div>
+            </div> <!-- /new-listing-full-course-info -->
+            <div class="form-group">
+              <label for="new-listing-title">Title of book</label>
+              <input type="text" class="form-control" id="new-listing-title" placeholder="Enter book title">
+            </div>
+            <div class="form-group">
+              <label class="form-group" for="new-listing-price">Price (in USD)</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control" id="new-listing-price" placeholder="Amount">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="new-listing-quality">Condition of book</label>
+              <input type="text" class="form-control" id="new-listing-quality" placeholder="Enter book condition">
+            </div>
+            <div class="form-group">
+              <label for="new-listing-description">Description</label>
+              <textarea type="text" class="form-control" id="new-listing-description" placeholder="Describe your textbook"></textarea>
+            </div>
+            <button type="button" class="btn btn-default" onclick='newPost()'>Submit</button>
+          </form>
+        </div>
+
+        <div id="account-page" style="display:none;">
+          <div class="container" id="account-page-container">
+            <div id="account-page-my-listings"></div>
+            <div id="account-page-my-offers"></div>
+            <div id="account-page-recieved-offers"></div>
+          </div>
+        </div> <!-- /account-page -->
+        
 
         <div id="display-post" style="display:none;">
           <div class="container" id="display-post-container">
@@ -309,6 +308,6 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        
+
       </body>
       </html>
