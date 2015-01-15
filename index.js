@@ -332,48 +332,66 @@ $(document).on('ready', function() {
 });
 
 function hideAll() {
-	for (var key in pageDivs) {
-		pageDivs[key].hide();
-	}
+	$(document).ready(function() {
+		for (var key in pageDivs) {
+			pageDivs[key].hide();
+		}
+	});
 }
 
 function showListings() {
 	// Based on search, show lots of posts
-	hideAll();
-	// TODO: To be added
+	$(document).ready(function() {
+		hideAll();
+		// TODO: To be added
+	});
 }
 
 function showLogin() {
-	hideAll();
-	pageDivs['login'].show();
+	$(document).ready(function() {
+		hideAll();
+		pageDivs['login'].show();
+	});
 }
 
 function showNewPost() {
-	hideAll();
-	pageDivs['newPost'].show();
+	$(document).ready(function() {
+		hideAll();
+		pageDivs['newPost'].show();
+	});
 }
 
 // function showSignup() {
-// 	hideAll();
-// 	pageDivs['signup'];
+// 	$(document).ready(function() {
+// 		hideAll();
+// 		pageDivs['signup'];
+// 	});
 // }
 
 // function showChangePass() {
-// 	hideAll();
-// 	pageDivs['changePass'].show();
+// 	$(document).ready(function() {
+// 		hideAll();
+// 		pageDivs['changePass'].show();
+// 	});
 // }
 
 function showPost(postID) {
-	hideAll();
-	pageDivs['displayPost'].show();
+	$(document).ready(function() {
+		hideAll();
+		pageDivs['displayPost'].show();
+	});
 }
 
 function showMyAccount() {
-	hideAll();
-	pageDivs['myAccount'];
+	$(document).ready(function() {
+		hideAll();
+		pageDivs['myAccount'];
+	});
 }
 
 function showCreateOffer(postID) {
-	hideAll();
-	pageDivs['createOffer'].show();
+	$(document).ready(function() {
+		hideAll();
+		pageDivs['createOffer'].show();
+	});
 }
