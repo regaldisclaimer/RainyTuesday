@@ -35,7 +35,7 @@
 
     <body>
       <div class ="header">
-        <nav class="navbar-default">
+        <nav id='mainNavBar' class="navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -53,7 +53,7 @@
                   <li><a href="#" onclick="showListings();">Search</a></li>
                   <li><a href="#" onclick="showNewPost();">New Listing</a></li>
                   <li><a href="#" onclick="showMyAccount();">My Account</a></li>
-                  <li><a href="#" onclick="logOut();">Sign Out</a></li>
+                  <li><a href="#" id='navLogOutButton' onclick="logOut();">Sign Out</a></li>
                 </ul>
               </div>
             </div>
@@ -61,25 +61,49 @@
         </div>
 
         <div id="sign-in-page" style="visibility:hidden;">
-          <div class="container" id="sign-in-page-container">
-
-            <form class="form-signin">
-              <h2 class="form-signin-heading">Please sign in</h2>
-              <h5 id="form-signin-subheading">You must use your tufts.edu email address</h5>
-              <label for="inputEmail" class="sr-only">Email address</label>
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-              <label for="inputPassword" class="sr-only">Password</label>
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" value="remember-me"> Remember me
-                </label>
-              </div>
-              <button class="btn btn-lg btn-primary btn-block" type="button" onclick='logIn()'>Sign in</button>
-            </form>
-          </div> <!-- /container -->
+          <div> <!-- sign in -->
+            <div class="container" id="sign-in-page-container">
+              <form class="form-signin">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <h5 id="form-signin-subheading">You must use your tufts.edu email address</h5>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div class="checkbox">
+  <!--                 <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                  </label> -->
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="button" onclick='logIn()'>Sign in</button>
+              </form>
+            </div> <!-- /container -->
+          </div>
+          <div> <!-- sign up -->
+            <div id="sign-up-page">
+              <div class="container" id="sign-up-page-container">
+                <form class="form-sign-up">
+                  <h2 class="form-sign-up-heading">Please sign up</h2>
+                  <h5 id="form-sign-up-subheading">You must use your tufts.edu email address</h5>
+                  <label for="create-user-email" class="sr-only">Email address</label>
+                  <input type="email" id="create-user-email" class="form-control" placeholder="Email address" required autofocus>
+                  <div class="checkbox">
+    <!--                 <label>
+                      <input type="checkbox" value="remember-me"> Remember me
+                    </label> -->
+                  </div>
+                  <button class="btn btn-lg btn-primary btn-block" type="button" onclick='createUser();'>Sign Up</button>
+                </form>
+              </div> <!-- for signing up -->
+            </div>
+          </div>
         </div> <!-- /sign-in-page -->
 
+        <div id='search-listings'>
+          <div class='container' id='search-listings-container'>
+            <h1>Search Listings</h1>
+          </div>
+        </div>
 
         <div id="new-listing" style="visibility:hidden;">
           <h2>List your textbook</h2>
@@ -260,12 +284,32 @@
 
         <div id="account-page" style="visibility:hidden;">
           <div class="container" id="account-page-container">
+            <div id='account-page-change-pass'>
+              <div id="change-pass-page">
+                <div class="container" id="change-pass-page-container">
+                  <form class="form-change-pass">
+                    <h2 class="form-change-pass-heading">Change Password</h2>
+                    <h5 id="form-change-pass-subheading">You must use your tufts.edu email address</h5>
+                    <label for="change-pass-email" class="sr-only">Email address</label>
+                    <input type="email" id="change-pass-email" class="form-control" placeholder="Email address" required autofocus>
+                    <label for="change-pass-oldPass" class="sr-only">Password</label>
+                    <input type="password" id="change-pass-oldPass" class="form-control" placeholder="Old Password" required>
+                    <label for="change-pass-newPass" class="sr-only">Password</label>
+                    <input type="password" id="change-pass-newPass" class="form-control" placeholder="New Password" required>
+                    <label for="change-pass-newPassConfirm" class="sr-only">Password</label>
+                    <input type="password" id="change-pass-newPassConfirm" class="form-control" placeholder="Confirm New Password" required>
+                    <div class="checkbox">
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick='logIn()'>Sign in</button>
+                  </form>
+                </div> <!-- /container -->
+              </div>
+            </div>
             <div id="account-page-my-listings"></div>
             <div id="account-page-my-offers"></div>
             <div id="account-page-recieved-offers"></div>
           </div>
         </div> <!-- /account-page -->
-        
 
         <div id="display-post" style="visibility:hidden;">
           <div class="container" id="display-post-container">
@@ -277,10 +321,15 @@
           </div>
         </div> <!-- /display-post -->
 
-        <!-- Add div for making an offer (price & message-->
-        <!-- Add div for signing up -->
-        <!-- Add div for changing password -->
-        <!-- Add div for rejecting and accepting offers -->
+        <div id="new-offer" style="visibility:hidden;">
+          <div class="container" id="new-offer-container">
+            <div id="new-offer-title"></div>
+            <div id="new-offer-description"></div>
+            <div id="new-offer-comments"></div>
+            <input id="new-offer-new-comment"></input>
+            <button id="new-offer-post-comment">Post</button>
+          </div>
+        </div> <!-- making an offer (price & message) -->
 
 
         <div id='tempForDebug' style="visibility:hidden;">

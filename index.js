@@ -14,12 +14,10 @@ $(document).ready(function() {
 	// Commented entries need to be added in HTML
 	pageDivs['login'] = $('#sign-in-page');
 	pageDivs['newPost'] = $('#new-listing');
-	// pageDivs['listings'] = $('#search-listings');
+	pageDivs['listings'] = $('#search-listings');
 	pageDivs['myAccount'] = $('#account-page');
 	pageDivs['displayPost'] = $('#display-post');
-	// pageDivs['signup'] = $('#sign-up');
-	// pageDivs['changePass'] = $('#change-password');
-	// pageDivs['createOffer'] = $('#create-offer');
+	pageDivs['createOffer'] = $('#new-offer');
 	pageDivs['debug'] = $('#tempForDebug'); // TODO: change to real names later
 });
 
@@ -40,19 +38,23 @@ function authDataCallback(authData) {
 		authVar = authData;
 		isAuthenticated = true;
 		showListings();
+		switchLogOut(isAuthenticated);
+
 	} else {
 		isAuthenticated = false;
 		showLogin();
+		switchLogOut(isAuthenticated);
 	}
 }
 
 // Create user via server
 function createUser(){
 	var emailVar;
-
+	alert('Logging in...');
 	//get email address
 	$(document).ready(function(){
 		emailVar = $('#create-user-email').val();
+		$('#create-user-email').val('');
 		//POST to server to create user
 		$.post("https://deanslist.herokuapp.com/createUser", {email:emailVar}, function(err){
 			if (err.error==true) {
@@ -111,10 +113,12 @@ function logIn(){
 	$(document).ready(function(){
 		email = $('#inputEmail').val();
 		if (!email) {
+			alert('Please enter email!');
 			return false
 		}
 		pass = $('#inputPassword').val();
 		if (!pass) {
+			alert('Please enter a password');
 			return false
 		}
 
@@ -180,20 +184,24 @@ function newPost(){
 	$(document).ready(function(){
 		courseDept = $('#new-listing-dept-choice').val();
 		if (!courseDept||(courseDept.length>5)) {
+			alert('Department invalid');
 			return false;
 		}
 		courseNum = $('#new-listing-course-number').val();
 		if (!courseNum||(courseNum.toString().length>4)) {
+			alert('Course number invalid');
 			return false;
 		} else {
 
 		}
 		courseSect = $('#new-listing-section').val();
 		if (!courseSect||(courseSect.toString().length>2)) {
+			alert('Section invalid');
 			return false;
 		}
 		title = $('#new-listing-title').val();
 		if (!title||(title.toString().length>150)) {
+			alert('Title non-existent or too long');
 			return false;
 		}
 		price = $('#new-listing-price').val();
@@ -202,14 +210,17 @@ function newPost(){
 		price.replace(',', '');
 		price = Number(price);
 		if (!price||(isNaN(price))) {
+			alert('Price non-existent or too long');
 			return false;
 		}
 		quality = $('#new-listing-quality').val();
 		if (!quality||(quality.toString().length>50)) {
+			alert('Quality non-existent or too long');
 			return false;
 		}
 		description = $('#new-listing-description').val();
 		if (description.toString().length>500) {
+			alert('Description too long');
 			return false;
 		}
 
@@ -240,8 +251,9 @@ function newPost(){
 		var URLsegments = postRef.toString().split('/');
 		var pID = URLsegments[URLsegments.length-1];
 		//save the text name under "$course" and "$postID2" with appropriate dir name
-		myFirebaseRef.child('courses').child(courseString).child(pID).set({
-			textName: title
+		myFirebaseRef.child('courses').child(courseDept).child(courseString).child(pID).set({
+			textName: title,
+			price: price
 		});
 		//add the text ID under the user's 'myPostIDs'
 		myFirebaseRef.child('users').child(uid).child('myPostIDs').child(pID).set(pID);
@@ -348,7 +360,8 @@ function showListings() {
 	// Based on search, show lots of posts
 	$(document).ready(function() {
 		hideAll();
-		// TODO: To be added
+		pageDivs['listings'].css('visibility', 'visible');
+		pageDivs['listings'].show();
 	});
 }
 
@@ -368,21 +381,21 @@ function showNewPost() {
 	});
 }
 
-// function showSignup() {
-// 	$(document).ready(function() {
-// 		hideAll();
-//		pageDivs['signup'].css('visibility', 'visible');
-// 		pageDivs['signup'].show();
-// 	});
-// }
+function showSignUp() {
+	$(document).ready(function() {
+		hideAll();
+		pageDivs['signup'].css('visibility', 'visible');
+		pageDivs['signup'].show();
+	});
+}
 
 // function showChangePass() {
 // 	$(document).ready(function() {
 // 		hideAll();
 // 		pageDivs['changePass'].css('visibility', 'visible');
-//		pageDivs['changePass'].show();
+// 		pageDivs['changePass'].show();
 // 	});
-// }
+// } deprecated. accessible via "MyAccount"
 
 function showPost(postID) {
 	$(document).ready(function() {
@@ -405,5 +418,21 @@ function showCreateOffer(postID) {
 		hideAll();
 		pageDivs['createOffer'].css('visibility', 'visible');
 		pageDivs['createOffer'].show();
+	});
+}
+
+function switchLogOut(isAuthenticated) {
+	//if authenticated, display "log out"
+	//else display "sign up"
+	$(document).ready(function() {
+		if (isAuthenticated) {
+			var navBar = $('#mainNavBar');
+			navBar.css('visibility', 'visible');
+			navBar.show();
+		} else {
+			var navBar = $('#mainNavBar');
+			navBar.css('visibility', 'hidden');
+			navBar.hide();
+		}
 	});
 }
