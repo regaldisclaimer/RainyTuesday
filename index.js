@@ -363,7 +363,6 @@ function fetchCourses(){
 			trEl = trEl.append(deptName);
 			trEl = trEl.append(courseNum);
 			trEl = trEl.append(sectionNum);
-			console.log(trEl);
 			$('#search-listings-table').append(trEl); 
 		});
 	});
@@ -371,7 +370,7 @@ function fetchCourses(){
 }
 
 function fetchEntries(){
-
+	//get list of keys from courses, and fetch by ID
 }
 
 function fetchComments(){
