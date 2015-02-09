@@ -1,6 +1,6 @@
 // Dean's List Firebase JS scripts
 // v 0.1
-// @regaldisclaimer @dyz3
+// @regaldisclaimer @AFriendlyRobot
 //requires firebase and jQuery
 
 //frequently used global variables
@@ -50,11 +50,14 @@ function authDataCallback(authData) {
 // Create user via server
 function createUser(){
 	var emailVar;
-	alert('Logging in...');
+	alert('Creating User... Please wait for a result message');
 	//get email address
 	$(document).ready(function(){
 		emailVar = $('#create-user-email').val();
+
+		//reset field
 		$('#create-user-email').val('');
+
 		//POST to server to create user
 		$.post("https://deanslist.herokuapp.com/createUser", {email:emailVar}, function(err){
 			if (err.error==true) {
@@ -81,6 +84,13 @@ function changePass(){
 	 	oldPass = $('#change-pass-oldPass').val();
 	 	newPass = $('#change-pass-newPass').val();
 	 	newPassRepeat =$('#change-pass-newPassConfirm').val();
+	 	alert('Changing password...');
+
+	 	//reset fields
+	 	$('#change-pass-oldPass').val('');
+	 	$('#change-pass-newPass').val('');
+	 	$('#change-pass-newPassConfirm').val('');
+
 	 	//check newPass==newPassRepeat
 	 	if (newPass != newPassRepeat) {
 	 		alert('New Passwords do not match... Please type them again!');
@@ -93,12 +103,12 @@ function changePass(){
 			}, function(error) {
 				if (error === null) {
 					//pass changed successfully
-					alert('change succesfully');
+					alert('Password changed succesfully!');
 				} else {
 					//error changing password
-					alert('there was an error changing password');
+					alert('There was an error changing password');
 				}
-			})
+			});
 		}
  	});
 }
