@@ -71,7 +71,7 @@
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <div class="checkbox">
-  <!--                 <label>
+                  <!--<label>
                     <input type="checkbox" value="remember-me"> Remember me
                   </label> -->
                 </div>
@@ -88,7 +88,7 @@
                   <label for="create-user-email" class="sr-only">Email address</label>
                   <input type="email" id="create-user-email" class="form-control" placeholder="Email address" required autofocus>
                   <div class="checkbox">
-    <!--                 <label>
+                    <!--<label>
                       <input type="checkbox" value="remember-me"> Remember me
                     </label> -->
                   </div>
@@ -100,8 +100,16 @@
         </div> <!-- /sign-in-page -->
 
         <div id='search-listings'>
-          <div class='container' id='search-listings-container'>
+          <div class='container' id='search-listings-title-container'>
             <h1>Search Listings</h1>
+          </div>
+          <div class='container' id='search-listings-container'>
+            <table id='search-listings-table' class='table table-hover'>
+              <tr id='search-listings-table-head'>
+                <th>Department</th>
+                <th>Course #</th>
+                <th>Section</th>
+              </tr>
           </div>
         </div>
 

@@ -24,7 +24,8 @@ $(document).ready(function() {
 //Update authentication status
 myFirebaseRef.onAuth(authDataCallback);
 
-
+//fetch and place courses
+fetchCourses();
 
 
 //
@@ -342,6 +343,30 @@ function rejectOffer(){
 }
 
 function fetchCourses(){
+	//Lists out all the courses when the user signs in
+	$(document).ready(function(){
+		myFirebaseRef.child('courses').on('child_added', function(snapshot){
+			var fullName = snapshot.key();
+			console.log(fullName);
+			//parse fullName
+			var deptName = fullName.slice(0,4);
+			deptName = '<td>'+deptName+'</td>';
+			deptName = $(deptName);
+			var courseNum = fullName.slice(4,8);
+			courseNum = '<td>'+courseNum+'</td>';
+			courseNum = $(courseNum);
+			var sectionNum = fullName.slice(8);
+			sectionNum = '<td>'+sectionNum+'</td>';
+			sectionNum = $(sectionNum);
+
+			var trEl = $('<tr></tr>');
+			trEl = trEl.append(deptName);
+			trEl = trEl.append(courseNum);
+			trEl = trEl.append(sectionNum);
+			console.log(trEl);
+			$('#search-listings-table').append(trEl); 
+		});
+	});
 
 }
 
