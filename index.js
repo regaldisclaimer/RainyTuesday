@@ -24,8 +24,7 @@ $(document).ready(function() {
 //Update authentication status
 myFirebaseRef.onAuth(authDataCallback);
 
-//fetch and place courses
-fetchCourses();
+
 
 
 //
@@ -198,12 +197,17 @@ function newPost(){
 			alert('Department invalid');
 			return false;
 		}
-		courseNum = $('#new-listing-course-number').val();
-		if (!courseNum||(courseNum.toString().length>4)) {
+		courseNum = $('#new-listing-course-number').val().toString();
+		if (!courseNum||(courseNum.length>4)) {
 			alert('Course number invalid');
 			return false;
 		} else {
-
+		//prepend 0 for the user
+		if (courseNum.length<4){
+			while(courseNum.length!=4) {
+				courseNum = "0" + courseNum;
+			}
+		}
 		}
 		courseSect = $('#new-listing-section').val();
 		if (!courseSect||(courseSect.toString().length>2)) {
@@ -342,20 +346,21 @@ function rejectOffer(){
 
 }
 
-function fetchCourses(){
+function fetchCourses(department){
 	//Lists out all the courses when the user signs in
+	console.log(department.value);
 	$(document).ready(function(){
-		myFirebaseRef.child('courses').on('child_added', function(snapshot){
+		myFirebaseRef.child('courses').child(department.value).on('child_added', function(snapshot){
 			var fullName = snapshot.key();
 			console.log(fullName);
 			//parse fullName
-			var deptName = fullName.slice(0,4);
+			var deptName = fullName.slice(0,-5);
 			deptName = '<td>'+deptName+'</td>';
 			deptName = $(deptName);
-			var courseNum = fullName.slice(4,8);
+			var courseNum = fullName.slice(-5,-1);
 			courseNum = '<td>'+courseNum+'</td>';
 			courseNum = $(courseNum);
-			var sectionNum = fullName.slice(8);
+			var sectionNum = fullName.slice(-1);
 			sectionNum = '<td>'+sectionNum+'</td>';
 			sectionNum = $(sectionNum);
 
